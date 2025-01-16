@@ -313,6 +313,7 @@ class ViewportGridService extends PubSubService {
         y: viewport.y,
         width: viewport.width,
         height: viewport.height,
+        positionId: viewport.positionId
       };
     });
   }

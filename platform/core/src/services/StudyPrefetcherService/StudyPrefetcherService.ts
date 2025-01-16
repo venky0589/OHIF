@@ -291,7 +291,7 @@ class StudyPrefetcherService extends PubSubService {
     }
 
     const activeViewport = viewports.get(activeViewportId);
-    const displaySetUpdated = this._setActiveDisplaySetsUIDs(activeViewport.displaySetInstanceUIDs);
+    const displaySetUpdated = this._setActiveDisplaySetsUIDs(activeViewport?.displaySetInstanceUIDs);
 
     if (forceRestart || displaySetUpdated) {
       this._restartPrefetching();

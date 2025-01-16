@@ -1274,9 +1274,9 @@ export default class HangingProtocolService extends PubSubService {
           const match = matchDetails.matchingScores[i];
           return match.matchingScore > 0
             ? {
-                matchingScores,
-                ...matchDetails.matchingScores[i],
-              }
+              matchingScores,
+              ...matchDetails.matchingScores[i],
+            }
             : null;
         }
       }

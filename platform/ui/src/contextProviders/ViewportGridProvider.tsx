@@ -230,6 +230,163 @@ export function ViewportGridProvider({ children, service }: ViewportGridProvider
 
         return { ...state, viewports };
       }
+      // case 'SET_LAYOUT': {
+      //   const {
+      //     numCols,
+      //     numRows,
+      //     layoutOptions,
+      //     layoutType = 'grid',
+      //     activeViewportId,
+      //     findOrCreateViewport,
+      //     isHangingProtocolLayout,
+      //   } = action.payload;
+
+      //   console.log("LAYOUT OPTIONS:");
+      //   //layoutOptions.sublayout = [{ numCols: 2, numRows: 2 }, , ,];
+      //   const hasOptions = layoutOptions?.length;
+      //   const viewports = new Map<string, AppTypes.ViewportGrid.Viewport>();
+      //   const options = {};
+
+      //   let activeViewportIdToSet = activeViewportId;
+      //   for (let row = 0; row < numRows; row++) {
+      //     for (let col = 0; col < numCols; col++) {
+      //       const position = col + row * numCols;
+      //       const layoutOption = layoutOptions[position];
+
+      //       let xPos, yPos, w, h;
+      //       if (layoutOptions && layoutOptions[position]) {
+      //         ({ x: xPos, y: yPos, width: w, height: h } = layoutOptions[position]);
+      //       } else {
+      //         w = 1 / numCols;
+      //         h = 1 / numRows;
+      //         xPos = col * w;
+      //         yPos = row * h;
+      //       }
+
+      //       const colIndex = Math.round(xPos * numCols);
+      //       const rowIndex = Math.round(yPos * numRows);
+
+      //       const positionId = layoutOption?.positionId || `${colIndex}-${rowIndex}`;
+
+      //       if (hasOptions && position >= layoutOptions.length) {
+      //         continue;
+      //       }
+
+      //       // Check if sublayout exists for this viewport
+      //       const sublayout = layoutOptions?.sublayout?.[position];
+
+      //       if (sublayout) {
+      //         // Create sublayout viewports
+      //         const subRows = sublayout.numRows;
+      //         const subCols = sublayout.numCols;
+
+      //         for (let subRow = 0; subRow < subRows; subRow++) {
+      //           for (let subCol = 0; subCol < subCols; subCol++) {
+      //             const subPosition = subCol + subRow * subCols;
+
+      //             const subW = w / subCols;
+      //             const subH = h / subRows;
+      //             const subX = xPos + subCol * subW;
+      //             const subY = yPos + subRow * subH;
+
+      //             const subPositionId = `${positionId}-${subRow}-${subCol})`;
+      //             const subViewport = findOrCreateViewport(position, subPositionId, options);
+
+      //             if (!subViewport) {
+      //               continue;
+      //             }
+
+      //             subViewport.positionId = subPositionId;
+
+      //             if (!subViewport.viewportOptions?.viewportId) {
+      //               const randomUID = utils.uuidv4().substring(0, 8);
+      //               subViewport.viewportOptions = subViewport.viewportOptions || {};
+      //               subViewport.viewportOptions.viewportId = `viewport-${randomUID}`;
+      //             } else {
+      //               subViewport.viewportOptions.viewportId += `-${subPosition}`;
+      //             }
+
+
+      //             subViewport.viewportId = subViewport.viewportOptions.viewportId;
+
+      //             console.log("SubviewPort Ids:", subViewport.viewportId);
+
+      //             viewports.set(subViewport.viewportId, {
+      //               ...subViewport,
+      //               width: subW,
+      //               height: subH,
+      //               x: subX,
+      //               y: subY,
+      //               viewportLabel: getViewportLabel(viewports, subViewport.viewportId),
+      //               isReady: false,
+      //             });
+
+      //             if (!subViewport.viewportOptions.presentationIds) {
+      //               const presentationIds = service.getPresentationIds({
+      //                 viewport: subViewport,
+      //                 viewports,
+      //               });
+      //               subViewport.viewportOptions.presentationIds = presentationIds;
+      //             }
+      //           }
+      //         }
+
+      //         continue; // Skip creating a main viewport for this position
+      //       }
+
+      //       const viewport = findOrCreateViewport(position, positionId, options);
+
+      //       if (!viewport) {
+      //         continue;
+      //       }
+
+      //       viewport.positionId = positionId;
+
+      //       if (!viewport.viewportOptions?.viewportId) {
+      //         const randomUID = utils.uuidv4().substring(0, 8);
+      //         viewport.viewportOptions = viewport.viewportOptions || {};
+      //         viewport.viewportOptions.viewportId = `viewport-${randomUID}`;
+      //       }
+
+      //       viewport.viewportId = viewport.viewportOptions.viewportId;
+
+      //       viewports.set(viewport.viewportId, {
+      //         ...viewport,
+      //         width: w,
+      //         height: h,
+      //         x: xPos,
+      //         y: yPos,
+      //         viewportLabel: getViewportLabel(viewports, viewport.viewportId),
+      //         isReady: false,
+      //       });
+
+      //       if (!viewport.viewportOptions.presentationIds) {
+      //         const presentationIds = service.getPresentationIds({
+      //           viewport,
+      //           viewports,
+      //         });
+      //         viewport.viewportOptions.presentationIds = presentationIds;
+      //       }
+      //     }
+      //   }
+
+      //   activeViewportIdToSet =
+      //     activeViewportIdToSet ?? determineActiveViewportId(state, viewports);
+
+      //   const ret = {
+      //     ...state,
+      //     activeViewportId: activeViewportIdToSet,
+      //     layout: {
+      //       ...state.layout,
+      //       numCols,
+      //       numRows,
+      //       layoutType,
+      //     },
+      //     viewports,
+      //     isHangingProtocolLayout,
+      //   };
+      //   return ret;
+      // }
       case 'SET_LAYOUT': {
         const {
           numCols,
@@ -331,6 +488,7 @@ export function ViewportGridProvider({ children, service }: ViewportGridProvider
           },
           viewports,
           isHangingProtocolLayout,
+          layoutOptions
         };
         return ret;
       }

@@ -266,6 +266,15 @@ window.config = {
         friendlyName: 'dicom local',
       },
     },
+    {
+      namespace: 'rsv-annotations-extension.dataSourcesModule.rsvdicomjson',
+      sourceName: 'rsvdicomjson',
+      configuration: {
+        friendlyName: 'rsv dicom json',
+        name: 'json',
+      },
+    },
+
   ],
   httpErrorHandler: error => {
     // This is 429 when rejected from the public idc sandbox too often.
